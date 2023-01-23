@@ -16,24 +16,27 @@ public class FilaYColumnas {
 
     public static void main(String[] args) {
         //Mayor fila a mayor columna
-        int[][] matriz = new int[0][0];
+        int numUsuario;
+        numUsuario = solicitarNumero();
+        int[][] matriz = new int[numUsuario][numUsuario];
+        solicitarMatriz(matriz);
     }
 
-    public static void solicitarNumero() {
+    public static int solicitarNumero() {
         Scanner teclado = new Scanner(System.in);
         int num = 0;
         do {
-
             try {
                 System.out.println("Introduzca un número del 3 al 6 ");
-                num = teclado.nextInt();
-                if (num >= 3 || num <= 6) {
+                if (num > 2 || num < 6) {
                     num = teclado.nextInt();
                 }
+                break;
             } catch (InputMismatchException ime) {
                 System.out.println("No has introducido un número entero ");
             }
         } while (true);
+        return num;
     }
 
     public static void solicitarMatriz(int[][] matriz) {
@@ -70,6 +73,6 @@ public class FilaYColumnas {
         }
         return c1;
     }
-    
-    public static void  
+
+//    public static void  
 }
