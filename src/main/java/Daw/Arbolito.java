@@ -16,6 +16,7 @@ public class Arbolito {
 
         Scanner teclado = new Scanner(System.in);
         int altura;
+        final int tronco = 2;
 
         System.out.println("Introduce un número del 2 al 10 para definir"
                 + " la altura del árbol ");
@@ -25,18 +26,33 @@ public class Arbolito {
                     + " la altura del árbol ");
             altura = teclado.nextInt();
         }
-        int matriz[][] = new int[altura][(altura * 2) - 1];
+        char matriz[][] = new char[altura + tronco][altura * 2];
+
+        for (int i = 0; i < matriz.length - tronco; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                if (j < altura - i || j > (altura + i)) {
+                    matriz[i][j] = ' ';
+                } else {
+                    matriz[i][j] = '*';
+                }
+            }
+        }
+
+        for (int i = matriz.length - tronco; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                if (j != altura) {
+                    matriz[i][j] = ' ';
+                } else {
+                    matriz[i][j] = '*';
+                }
+            }
+        }
+
         for (int i = 0; i < matriz.length; i++) {
             System.out.println();
             for (int j = 0; j < matriz[i].length; j++) {
-                matriz[i][j] = 1;
                 System.out.print(matriz[i][j]);
             }
         }
-        for (int i = matriz.length; i <  + altura; i++) {
-            matriz[i] = matriz[i-altura];
-            System.out.println("*");
-        }
     }
-
 }
